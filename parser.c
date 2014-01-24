@@ -107,9 +107,9 @@ int main()
    Person* jenny = Create("jennifer","Desgrottes",18,"derp");
    Person* Naika = read("Mike.zh");
    add_friend(Mike,jenny);
-   //info(Naika);
-   //info(Mike);
-   //info(jenny);
+   info(Naika);
+   info(Mike);
+   info(jenny);
    
    return(0);
 }
