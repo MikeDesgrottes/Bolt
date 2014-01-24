@@ -1,4 +1,4 @@
 CC=gcc
 CFLAGS=-g
 all:
-	$(CC) $(CFLAGS) parser.c Person.c -o parser
+	$(CC) $(CFLAGS) test.c parser.c Person.c -o parser
