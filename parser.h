@@ -11,7 +11,6 @@ struct dtb{
     char* value;
     List *next;
 };
-extern List *LIST;
 int index_of(char *str, char st);
 char* print(char *string, int index);
 char* print_before(char *str, int index);
@@ -20,6 +19,6 @@ void write(Person* head);
 List* get_end_list(List *list);
 void write_to_dtb(Person *head);
 List* Create_list();
-void initialize();
+void init();
 
 #endif

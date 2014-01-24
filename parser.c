@@ -17,10 +17,11 @@
 *
 */
 List *LIST;
-void Initialize()
+void init()
 {
-    LIST->value = "";
-    LIST->next = NULL;
+	LIST = malloc(sizeof(List));
+	LIST->value = "";
+	LIST->next = NULL;
 }
 List* Create_list()
 {
@@ -120,6 +121,10 @@ List* get_end_list(List *list)
 {
     List *tmp = malloc(sizeof(List));
     tmp = list;
+    if(tmp->next == NULL)
+    {
+		return NULL;
+	}
     while(tmp->next != NULL)
     {
         tmp = tmp->next;
@@ -128,19 +133,21 @@ List* get_end_list(List *list)
 }
 void write_to_dtb(Person *head)
 {
-    Initialize();
+    init();
     List *tmp = get_end_list(LIST);
     List *tmp2 = malloc(sizeof(List));
     tmp2->next = NULL;
     tmp2->value = head->fname;
     if(tmp == NULL)
     {
-        puts("work!\n");
+        puts("work!");
         LIST->next = tmp2;
     }else
     {
+		puts("hello WOrld");
         tmp->next = tmp2;
     }
+    printf("%s\n",LIST->next->value);
 }
 /*int main()
 {
