@@ -120,8 +120,8 @@ void list_friends(Person *head)
         printf("%s %s's friend(s) are: ",head->fname,head->lname);
         while(tmp != NULL)
         {
-            //printf("%s\n",tmp->name);
-            puts("Hello World\n");
+            printf("%s\n",tmp->name);
+            //puts("Hello World\n");
             tmp = tmp->next;
         }
         printf("\n");
