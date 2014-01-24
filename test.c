@@ -1,19 +1,18 @@
 #include "Person.h"
+#include "parser.h"
 #include <stdio.h>
 
 int main()
 {
-    Person *head = Create("Mike","Desgrottes",17,"derp");
-    Person *new = Create("Jennifer","Desgrottes",18,"derp");
-    Person *new2 = Create("Mikelee","Desgrottes",17,"derp");
-    add_friend(head,new);
-    add_friend(new,new2);
-    //printf("%s\n",head->lfriends->name);
-    list_friends(head);
-    list_friends(new);
-    info(head);
-    destroy(head);
-    destroy(new);
-    destroy(new2);
+    Person* Mike = Create("Mike","Desgrottes",17,"Derp");
+    Person* jenny = Create("jennifer","Desgrottes",18,"derp");
+    Person* Naika = read("Mike.zh");
+    add_friend(Mike,jenny);
+    info(Naika);
+    info(Mike);
+    info(jenny);
+    destroy(Mike);
+    destroy(jenny);
+    destroy(Naika);
     return(0);
 }

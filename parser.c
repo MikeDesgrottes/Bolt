@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "Person.h"
+#include "parser.h"
 /*--------------------Project Zehav.1.0.0.----------------
 * This is the first version of zParser. The parser to project Zeha.
 *
@@ -101,7 +102,7 @@ void write(Person* head)
     fprintf(f,"First name=%s\nLast name=%s\nage=%i\ndescription=%s\n",tmp->fname,tmp->lname,tmp->age,tmp->description);
     fclose(f);
 }
-int main()
+/*int main()
 {
    Person* Mike = Create("Mike","Desgrottes",17,"Derp");
    Person* jenny = Create("jennifer","Desgrottes",18,"derp");
@@ -113,3 +114,4 @@ int main()
    
    return(0);
 }
+*/
