@@ -16,7 +16,19 @@
 *
 *
 */
-
+List *LIST;
+void Initialize()
+{
+    LIST->value = "";
+    LIST->next = NULL;
+}
+List* Create_list()
+{
+    List* tmp = malloc(sizeof(List));
+    tmp->value = "";
+    tmp->next = NULL;
+    return tmp;
+}
 int index_of(char *str, char st)
 {
     int i=0;
@@ -101,6 +113,34 @@ void write(Person* head)
     FILE *f = fopen(msg,"w");
     fprintf(f,"First name=%s\nLast name=%s\nage=%i\ndescription=%s\n",tmp->fname,tmp->lname,tmp->age,tmp->description);
     fclose(f);
+    
+}
+
+List* get_end_list(List *list)
+{
+    List *tmp = malloc(sizeof(List));
+    tmp = list;
+    while(tmp->next != NULL)
+    {
+        tmp = tmp->next;
+    }
+    return tmp;
+}
+void write_to_dtb(Person *head)
+{
+    Initialize();
+    List *tmp = get_end_list(LIST);
+    List *tmp2 = malloc(sizeof(List));
+    tmp2->next = NULL;
+    tmp2->value = head->fname;
+    if(tmp == NULL)
+    {
+        puts("work!\n");
+        LIST->next = tmp2;
+    }else
+    {
+        tmp->next = tmp2;
+    }
 }
 /*int main()
 {
