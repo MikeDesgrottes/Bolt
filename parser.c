@@ -140,14 +140,60 @@ void write_to_dtb(Person *head)
     tmp2->value = head->fname;
     if(tmp == NULL)
     {
-        puts("work!");
+        //puts("work!");
         LIST->next = tmp2;
     }else
     {
-		puts("hello WOrld");
-        tmp->next = tmp2;
+        if(!contains(LIST,head))
+        {
+            tmp->next = tmp;
+            puts("Hello");
+        }else
+        {
+            puts("Person already in the database!!");
+        }
     }
     printf("%s\n",LIST->next->value);
+   /* if(!contains(LIST,head))
+    {
+        puts("Hello");
+    }*/
+}
+int contains(List* list,Person* person)
+{
+    List* tmp = LIST;
+    if(tmp==NULL)
+    {
+        return 0;
+    }else if(person == NULL)
+    {
+        puts("Person does not exist!");
+    }else
+    {
+        while(tmp->next != NULL)
+        {
+            if(person->fname == tmp->value)
+                return 1;
+            printf("%s\n",tmp->value);
+            tmp = tmp->next;
+        }
+        if(person->fname == tmp->value)
+        {
+            printf("%s\n",tmp->value);
+            return 1;
+        }
+    }
+    return 0;
+}
+char* lookup(List* list, Person* person)
+{
+    if(contains(list,person))
+    {
+        return person->fname;
+    }else
+    {
+        return NULL;
+    }
 }
 /*int main()
 {

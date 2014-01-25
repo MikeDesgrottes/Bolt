@@ -15,5 +15,6 @@ int main()
     destroy(jenny);
     destroy(Naika);*/
     write_to_dtb(Mike);
+     write_to_dtb(Mike);
     return(0);
 }

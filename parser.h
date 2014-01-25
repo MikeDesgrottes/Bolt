@@ -20,5 +20,6 @@ List* get_end_list(List *list);
 void write_to_dtb(Person *head);
 List* Create_list();
 void init();
-
+int contains(List* list,Person* person);
+char* lookup(List* list, Person* person);
 #endif
