@@ -157,13 +157,12 @@ void write_to_dtb(Person *head)
         if(!contains(LIST,head))
         {
             tmp->next = tmp;
-            puts("Hello");
         }else
         {
             puts("Person already in the database!!");
         }
     }
-    printf("%s\n",LIST->next->value);
+    //printf("%s\n",LIST->next->value);
    /* if(!contains(LIST,head))
     {
         puts("Hello");
@@ -185,12 +184,12 @@ int contains(List* list,Person* person)
         {
             if(person->fname == tmp->value)
                 return 1;
-            printf("%s\n",tmp->value);
+            //printf("%s\n",tmp->value);
             tmp = tmp->next;
         }
         if(person->fname == tmp->value)
         {
-            printf("%s\n",tmp->value);
+            //printf("%s\n",tmp->value);
             return 1;
         }
     }
@@ -205,6 +204,17 @@ char* lookup(List* list, Person* person)
     {
         return NULL;
     }
+}
+
+void list_person()
+{
+    List* tmp = LIST;
+    while(tmp->next != NULL)
+    {
+        printf("%s\n",tmp->value);
+        tmp = tmp->next;
+    }
+    printf("%s\n",tmp->value);
 }
 /*int main()
 {
