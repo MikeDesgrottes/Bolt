@@ -17,12 +17,15 @@
 *
 */
 List *LIST;
+// Initialize the global variable LIST.
 void init()
 {
 	LIST = malloc(sizeof(List));
 	LIST->value = "";
 	LIST->next = NULL;
 }
+
+// create a list
 List* Create_list()
 {
     List* tmp = malloc(sizeof(List));
@@ -30,20 +33,21 @@ List* Create_list()
     tmp->next = NULL;
     return tmp;
 }
+// find the index of a character in a string. if the character is not found return -1.
 int index_of(char *str, char st)
 {
     int i=0;
     size_t len = strlen(str);
-    for(i=0;i<=len;i++)
+    for(i=0;i<=len;i++)//loop through the string
     {
         if(str[i]==st)
             return i;
             
-        if(i==len && str[i] != st)
+        if(i==len && str[i] != st)// if it's the last character and it does not match the character return -1;
             return -1;
     }
 }
-
+// This function print everything after, but not including , index.
 char* print(char *string, int index)
 {
     int count =0;
@@ -52,16 +56,16 @@ char* print(char *string, int index)
     char *tmp = malloc(sizeof(char)*index);
     for(;i<=len;i++)
     {
-        //printf("%i\n",i);
+        //printf("%i\n",i); <-- for testing purposes. 
         //printf("%c\n",string[i]);
         tmp[count] = string[i];
         count = count +1;
         
     }
-    //printf("%s\n",tmp);
+    //printf("%s\n",tmp); <-- for testing purposes/
     return (tmp);
 }
-
+// print everything before the character at index.
 char* print_before(char *str, int index)
 {
     int i = 0;
@@ -69,12 +73,13 @@ char* print_before(char *str, int index)
     for(i=0;i<index;i++)
     {
         msg[i] = str[i];
-        //printf("%c -> %i\n",msg[i],index);
+        //printf("%c -> %i\n",msg[i],index); <--- for testing purposes.
     }
     msg[index] = '\0';
-    //printf("%s: ",msg);
+    //printf("%s: ",msg); <-- for testing purposes.
     return msg;
 }
+// this function read a file and create a struct of person from it.
 Person* read(char* str)
 {
     Person *head = malloc(sizeof(Person));
@@ -85,7 +90,7 @@ Person* read(char* str)
     {
         while(fgets(result[count],1024,fp) != NULL)
         {
-            //printf("%s\n",result[count]);
+            //printf("%s\n",result[count]); <-- this and those 2 line sbelow are for testing purpose.
             //printf("%s: ",print_before(result[count],index_of(result[count],'=')));
             //printf("%s",print(result[count],index_of(result[count],'=')));
             count++;
@@ -105,7 +110,7 @@ Person* read(char* str)
     }
     return head;
 }
-
+// Create a file from a Person structure.
 void write(Person* head)
 {
     Person *tmp = head;
@@ -131,9 +136,14 @@ List* get_end_list(List *list)
     }
     return tmp;
 }
+/* This function take the first name of the head and append it to the linked list LIST
+ * 	TODO: Do not store only the first name. Store both the first name and the last name.
+ * 
+ * 
+ * */
 void write_to_dtb(Person *head)
 {
-    init();
+    //init();
     List *tmp = get_end_list(LIST);
     List *tmp2 = malloc(sizeof(List));
     tmp2->next = NULL;
@@ -159,6 +169,7 @@ void write_to_dtb(Person *head)
         puts("Hello");
     }*/
 }
+// return 1 if the person's first name is found in the linked list LIST else return 0.
 int contains(List* list,Person* person)
 {
     List* tmp = LIST;

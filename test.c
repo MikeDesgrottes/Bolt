@@ -14,6 +14,7 @@ int main()
     destroy(Mike);
     destroy(jenny);
     destroy(Naika);*/
+    init();
     write_to_dtb(Mike);
      write_to_dtb(Mike);
     return(0);
