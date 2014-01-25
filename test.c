@@ -4,16 +4,35 @@
 
 void user_input()
 {
-    char input = fgetc(stdin);
-    char* name[1024];
+    char input;
+    char name[1024];
+    char lname[1024];
     int age;
-    char* description[1024];
+    char description[1024];
     while(input != 'x')
     {
+        input = fgetc(stdin);
         if(input == 'c')
         {
-            puts("Create");
-            exit(0);
+            printf("Please enter your first name:");
+            scanf("%1023s",name);
+            printf("Please enter your last name:");
+            scanf("%1023s",lname);
+            printf("Please enter your age: ");
+            scanf("%i",&age);
+            printf("Please write a shor description of you: ");
+            scanf("%1023s",description);
+            printf("Creating File....\n");
+            write(Create(name,lname,age,description));
+            continue;
+        }else if(input == 'r')
+        {
+            printf("Please enter the file path: ");
+            char* msg[1024];
+            scanf("%[^\n]",msg);
+            printf("%s",msg);
+            continue;
+            
         }
     }
 }
