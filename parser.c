@@ -20,9 +20,32 @@ List *LIST;
 // Initialize the global variable LIST.
 void init()
 {
-	LIST = malloc(sizeof(List));
-	LIST->value = "";
-	LIST->next = NULL;
+	LIST = Create_list();
+	List *tmp = LIST->next;
+	FILE *f  = fopen("dtb.zh","r+w");
+	if(f == NULL)
+	{
+		puts("Error");
+	}else
+	{
+		if(tmp != NULL)
+		{
+			while( tmp != NULL||fgets(tmp->value,1024,f) != NULL)
+			{
+			tmp = tmp->next;
+			}
+		}else
+		{
+			tmp->next = Create_list();
+			while(tmp != NULL || fgets(tmp->value,1024,f))
+			{
+			tmp->next = Create_list();
+			tmp = tmp->next;
+			}
+		}
+	}
+	fclose(f);
+	
 }
 
 // create a list
@@ -95,10 +118,10 @@ Person* read(char* str)
             //printf("%s",print(result[count],index_of(result[count],'=')));
             count++;
         }
-        head->fname = print(result[0],index_of(result[0],'='));
-        head->lname = print(result[1],index_of(result[1],'='));
+        head->fname = trim(print(result[0],index_of(result[0],'=')));
+        head->lname = trim(print(result[1],index_of(result[1],'=')));
         head->age = atoi(print(result[2],index_of(result[2],'=')));
-        head->description = print(result[3],index_of(result[3],'='));
+        head->description = trim(print(result[3],index_of(result[3],'=')));
         head->lfriends = NULL;
         //printf("%s\n",result[0]);
         fclose(fp);
@@ -115,7 +138,7 @@ void write(Person* head)
 {
     Person *tmp = head;
     char msg[1024];
-    snprintf(msg,1024,"%s%s%s%s",head->fname," ",head->lname,".zh");
+    snprintf(msg,1024,"%s%s%s%s",head->fname,"_",head->lname,".zh");
     FILE *f = fopen(msg,"w");
     fprintf(f,"First name=%s\nLast name=%s\nage=%i\ndescription=%s\n",tmp->fname,tmp->lname,tmp->age,tmp->description);
     fclose(f);

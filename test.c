@@ -9,6 +9,9 @@ void user_input()
     char lname[1024];
     int age;
     char description[1024];
+    char file[1024];
+    Person *tmp = NULL;
+    init();
     while(input != 'x')
     {
         input = fgetc(stdin);
@@ -23,17 +26,25 @@ void user_input()
             printf("Please write a shor description of you: ");
             scanf("%1023s",description);
             printf("Creating File....\n");
-            write(Create(name,lname,age,description));
+            tmp = Create(name,lname,age,description);
+            write(tmp);
+            write_to_dtb(tmp);
             continue;
-        }else if(input == 'r')
+        }
+        
+        if(input == 'r')
         {
             printf("Please enter the file path: ");
-            char* msg[1024];
-            scanf("%[^\n]",msg);
-            printf("%s",msg);
+            scanf("%1023s",file);
+            //printf("%s\n",file);
+            info(read(file));
+            //input = NULL;
             continue;
             
-        }
+        }else if(input == 'l')
+        {
+			list_person();
+		}
     }
 }
 int main()
@@ -53,5 +64,6 @@ int main()
     //write_to_dtb(Mike);
     list_person();*/
     user_input();
+    
     return(0);
 }
