@@ -23,4 +23,5 @@ void init();
 int contains(List* list,Person* person);
 char* lookup(List* list, Person* person);
 void list_person();
+char* trim(char* str);
 #endif

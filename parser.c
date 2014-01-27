@@ -239,6 +239,19 @@ void list_person()
     }
     printf("%s\n",tmp->value);
 }
+
+char* trim(char* str)
+{
+    char* tmp = malloc(sizeof(char)*strlen(str));
+    int i=0;
+    for(i=0;i<=strlen(str);i++)
+    {
+        if(str[i] !='\n')
+            tmp[i] = str[i];
+    }
+    tmp[i] = '\0';
+    return tmp;
+}
 /*int main()
 {
    Person* Mike = Create("Mike","Desgrottes",17,"Derp");
