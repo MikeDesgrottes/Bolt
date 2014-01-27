@@ -166,3 +166,12 @@ void destroy(void *head)
 {
     free(head);
 }
+
+char* trim( char *s )
+{
+    char* msg = malloc(sizeof(char) * strlen(s));
+    strncpy(msg,s,strlen(s) -1);
+    msg[strlen(s)] = '\0';
+    return msg;
+    
+}
