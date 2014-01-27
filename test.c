@@ -60,22 +60,17 @@ int main()
     info(Naika);
     info(Mike);
     info(jenny);
-    
     //destroy(Mike);
     //destroy(jenny);
     //destroy(Naika);
     //init();
-<<<<<<< HEAD
     write_to_dtb(Mike);
     //write_to_dtb(Mike);
     list_person();
     //user_input();
-    
-=======
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
     //list_person();
     //user_input();
->>>>>>> 0ea982a6140b3b67f86556c0bbcf2aaefab26317
     return(0);
 }

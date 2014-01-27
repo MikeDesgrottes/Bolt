@@ -240,17 +240,12 @@ void list_person()
     printf("%s\n",tmp->value);
 }
 
-char* trim(char* str)
+char* trim( char *s )
 {
-    char* tmp = malloc(sizeof(char)*strlen(str));
-    int i=0;
-    for(i=0;i<=strlen(str);i++)
-    {
-        if(str[i] !='\n')
-            tmp[i] = str[i];
-    }
-    tmp[i] = '\0';
-    return tmp;
+    char* msg = malloc(sizeof(char) * strlen(s));
+    strncpy(msg,s,strlen(s) -1);
+    msg[strlen(s)] = '\0';
+    return msg;
 }
 /*int main()
 {

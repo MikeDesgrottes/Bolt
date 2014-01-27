@@ -167,15 +167,6 @@ void destroy(void *head)
     free(head);
 }
 
-<<<<<<< HEAD
-char* trim( char *s )
-{
-    char* msg = malloc(sizeof(char) * strlen(s));
-    strncpy(msg,s,strlen(s) -1);
-    msg[strlen(s)] = '\0';
-    return msg;
-    
-=======
 void delete_friend(Person* head,Person* del)
 {
     friends *current = head->lfriends;
@@ -198,5 +189,4 @@ void delete_friend(Person* head,Person* del)
         current = current->next;
         next = current->next;
     }
->>>>>>> 0ea982a6140b3b67f86556c0bbcf2aaefab26317
 }
