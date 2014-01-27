@@ -49,21 +49,25 @@ void user_input()
 }
 int main()
 {
-    /*Person* Mike = Create("Mike","Desgrottes",17,"Derp");
+    Person* Mike = Create("Mike","Desgrottes",17,"Derp");
     Person* jenny = Create("jennifer","Desgrottes",18,"derp");
     Person* Naika = read("Mike.zh");
     add_friend(Mike,jenny);
     info(Naika);
     info(Mike);
     info(jenny);
+    delete_friend(Mike,jenny);
+    info(Naika);
+    info(Mike);
+    info(jenny);
+    
     //destroy(Mike);
     //destroy(jenny);
     //destroy(Naika);
-    init();
-    write_to_dtb(Mike);
+    //init();
     //write_to_dtb(Mike);
-    list_person();*/
-    user_input();
-    
+    //write_to_dtb(Mike);
+    //list_person();
+    //user_input();
     return(0);
 }

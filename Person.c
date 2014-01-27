@@ -4,7 +4,7 @@
 #include <string.h>
 /* TODO: Implement a function that will allow the user to delete a friend.
 *        Implement a function that will return an array of friends of a particulat Person.
-*        Implement a function that make adding friends vice versa. Use recursive function to do this
+*        Implement a function that make adding friends vice versa. Use recursive function to do this <- Done
 * The code below implement the list of function to create,add,list Person
 *Author: Mike Desgrottes
 * you can do whatever you want with the code but i need to know the change you've made.
@@ -165,4 +165,28 @@ void info(Person* head)
 void destroy(void *head)
 {
     free(head);
+}
+
+void delete_friend(Person* head,Person* del)
+{
+    friends *current = head->lfriends;
+    friends *prev = NULL;
+    friends *next = current->next;
+    if(current == NULL)
+        printf("no friends to delete");
+    while(current != NULL)
+    {
+        if(current->name == del->fname && prev == NULL)
+        {
+            head->lfriends = next;
+            free(current);
+        }else if(current->name == del->fname)
+        {
+            prev->next == next;
+            free(current);
+        }
+        prev = current;
+        current = current->next;
+        next = current->next;
+    }
 }
