@@ -11,7 +11,6 @@ void user_input()
     char description[1024];
     char file[1024];
     Person *tmp = NULL;
-    init();
     while(input != 'x')
     {
         input = fgetc(stdin);
@@ -26,6 +25,7 @@ void user_input()
             printf("Please write a shor description of you: ");
             scanf("%1023s",description);
             printf("Creating File....\n");
+            printf("Done..\n");
             tmp = Create(name,lname,age,description);
             write(tmp);
             //write_to_list(tmp);
@@ -43,7 +43,6 @@ void user_input()
             
         }else if(input == 'l')
         {
-			list_person();
 		}
     }
 }
@@ -70,7 +69,7 @@ int main()
     //user_input();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
-    list_person(tmp);
-    //user_input();
+    //list_person(tmp);
+    user_input();
     return(0);
 }
