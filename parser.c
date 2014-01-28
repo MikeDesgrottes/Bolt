@@ -8,7 +8,7 @@
 *
 **TODO: Implement a data structure for wich zParser will store information <--- See Person.c and Person.h for the solution
 *       Add feature to use .txt file to store information from data structure to the file
-*
+*       Implement a change to add not only the irst name but also the last name.
 *
 **
 *
@@ -16,22 +16,24 @@
 *
 *
 */
-List *LIST;
-// Initialize the global variable LIST.
-
+/* This function create a linked list of list out of a text file.
+*   TODO: Fix it. It does return a list but it lose the pointer for list->next?
+*
+*
+**/
 List* init()
 {
 	List* LIST;
-	char* line = malloc(sizeof(char)*1024);
+	char* line = malloc(sizeof(char)*1024);// temporary variable to store each line in the text file.
 	LIST = Create_list();
 	List *tmp = NULL;
-	FILE *f  = fopen("dtb.zh","r+w");
-	if(f == NULL)
+	FILE *f  = fopen("dtb.zh","r+w");// open the file
+	if(f == NULL)// if file does not exist
 	{
 		puts("Error");
 	}else
 	{
-		if(tmp != NULL)
+		if(tmp != NULL)// stub code
 		{
 			while( tmp != NULL||fgets(tmp->value,1024,f) != NULL)
 			{
@@ -39,20 +41,20 @@ List* init()
 			}
 		}else
 		{
-			tmp = Create_list();
+			tmp = Create_list(); // initialize temporary list to empty list
 			LIST->next = tmp;
-			while(fgets(line,1024,f) != NULL)
+			while(fgets(line,1024,f) != NULL)// get all the line from the text file and store them in line.
 			{
-				tmp->value = line;
+				tmp->value = line;// set tmp value to the line.
 			tmp->next = Create_list();
 			tmp = tmp->next;
 			}
 		}
-		printf("%s",LIST->next->value);
+		printf("%s",LIST->next->value);// testing purposes
 	}
 	free(line);
 	fclose(f);
-	return tmp;
+	return tmp;// unfortunatley it only return tmp, the pointer in tmp->next is lost.
 	
 }
 
@@ -126,7 +128,7 @@ Person* read(char* str)
             //printf("%s",print(result[count],index_of(result[count],'=')));
             count++;
         }
-        head->fname = trim(print(result[0],index_of(result[0],'=')));
+        head->fname = trim(print(result[0],index_of(result[0],'=')));// the trim function just take ou the newline character from string.
         head->lname = trim(print(result[1],index_of(result[1],'=')));
         head->age = atoi(print(result[2],index_of(result[2],'=')));
         head->description = trim(print(result[3],index_of(result[3],'=')));
