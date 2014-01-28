@@ -5,7 +5,10 @@
 /* TODO: Implement a function that will allow the user to delete a friend.
 *        Implement a function that will return an array of friends of a particulat Person.
 *        Implement a function that make adding friends vice versa. Use recursive function to do this <- Done
-* The code below implement the list of function to create,add,list Person
+* 
+*
+*
+*The code below implement the list of function to create,add,list Person
 *Author: Mike Desgrottes
 * you can do whatever you want with the code but i need to know the change you've made.
 */
@@ -48,14 +51,17 @@ friends* get_end(Person *p)// This function get the last Person in your list of 
 void add_friend(Person *head,Person *friend)//This function works like append. it add your new friend to the last element.
 {
     friends *tmp = get_end(head);// get the last friend in the linked list of friends
-    friends *tmp2 = malloc(sizeof(friends));
+    friends *tmp2 = malloc(sizeof(friends));// aallocate temporary friends
     friends *temp = malloc(sizeof(friends));
-    memset(temp,0,sizeof(friends));
+    memset(temp,0,sizeof(friends));// zeroed aout the structures.
     friends* tmp3 = get_end(friend);/* allocate some memory on the heap for this Friends */
     if(tmp == NULL)//check to see if Person does not have any friends
     {
-        if(tmp3 == NULL)
+        if(tmp3 == NULL) //Check to see if friend have any friends yet.
         {
+            /* This following code add friends to list of head's friends and it also add head to the list of fr
+            * friend's friends.
+            */
 			temp->name = head->fname;
 			temp->next = NULL;
 			friend->lfriends = temp;
@@ -157,51 +163,61 @@ int count_friend(Person *head)
     }
     return count;
 }
+/*Print out the information of a Person.*/
 void info(Person* head)
 {
     printf("First name: %s\nLast name: %s\nage: %i\ndescriptiong: %s\n",head->fname,head->lname,head->age,head->description);
-    list_friends(head);
+    list_friends(head);// list the friends.
 }
+/* I had so many memory leaks tha i decided to create a function to destroy a Person when you done using it
+*   TODO: please add a feature to this function so that it free all the friends of that Person.
+*
+*
+*/
 void destroy(void *head)
 {
     free(head);
 }
-
+/* Function to delete a particular Person from a Person's list of friends
+* This code 
+*/
 void delete_friend(Person* head,Person* del)
 {
-    friends *current = head->lfriends;
+    friends *current = head->lfriends;// Initialize the current friends to the first friends in head's list of friends.
     friends *prev = NULL;
-    if(current == NULL){
+    if(current == NULL) // If head have no friends
+    {
         printf("no friends to delete\n");
         return;
-        }
-    friends *next = current->next;
-	if(isfriends(head,del))
+    }
+    friends *next = current->next; // initialize next as next friends in current
+	if(isfriends(head,del))// if the 2 parameters are friends...
 	{
-		while(current != NULL)
+		while(current != NULL)// Loop through the whole list of friends.
 		{
-			if(current->name == del->fname && prev == NULL)
+			if(current->name == del->fname && prev == NULL)// Check to see if it found the first name of the person to delete and that prev is null
 			{
+			    /* The above condition checks to seee if we are the first friend in the friend list.*/
 				head->lfriends = NULL;
 				free(current);
 				delete_friend(del,head);
 				return;
 			}else if(current->name == del->fname)
 			{
-				prev->next == next;
-				free(current);
+				prev->next == next;// update the list.
+				free(current);// free the deleted friend.
 			}
 			prev = current;
 			current = current->next;
 			next = current->next;
-			delete_friend(del,head);
+			delete_friend(del,head);// recursive function to delete vice versa
 		}
-	}else if(!isfriends(head,del))
+	}else if(!isfriends(head,del))// If that person was not your friend... What should i do?
 	{
 		
 	}
 }
-
+/* a simple boolan function to see if a Person is your friend.*/
 int isfriends(Person* head, Person* friend)
 {
 	friends *tmp = head->lfriends;
