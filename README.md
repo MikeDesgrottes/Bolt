@@ -16,3 +16,5 @@ http://www.youtube.com/user/c9ide.
 
 Happy coding!
 The Cloud9 IDE team
+
+If you wish to contribute you can visit this site: https://c9.io/mikedes/bolt
