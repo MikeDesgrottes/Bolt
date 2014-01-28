@@ -17,6 +17,7 @@ struct fri{
     char* name;
     friends *next;
 };
+/* Prototype of the functions of Person. name are pretty self-explainitory*/
 Person* Create(char *fname, char *lname, int age, char *description);
 friends* get_end(Person *p);
 void add_friend(Person *head, Person *friend);
