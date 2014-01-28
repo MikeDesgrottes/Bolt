@@ -171,22 +171,46 @@ void delete_friend(Person* head,Person* del)
 {
     friends *current = head->lfriends;
     friends *prev = NULL;
-    friends *next = current->next;
-    if(current == NULL)
-        printf("no friends to delete");
-    while(current != NULL)
-    {
-        if(current->name == del->fname && prev == NULL)
-        {
-            head->lfriends = next;
-            free(current);
-        }else if(current->name == del->fname)
-        {
-            prev->next == next;
-            free(current);
+    if(current == NULL){
+        printf("no friends to delete\n");
+        return;
         }
-        prev = current;
-        current = current->next;
-        next = current->next;
-    }
+    friends *next = current->next;
+	if(isfriends(head,del))
+	{
+		while(current != NULL)
+		{
+			if(current->name == del->fname && prev == NULL)
+			{
+				head->lfriends = NULL;
+				free(current);
+				delete_friend(del,head);
+				return;
+			}else if(current->name == del->fname)
+			{
+				prev->next == next;
+				free(current);
+			}
+			prev = current;
+			current = current->next;
+			next = current->next;
+			delete_friend(del,head);
+		}
+	}else if(!isfriends(head,del))
+	{
+		
+	}
+}
+
+int isfriends(Person* head, Person* friend)
+{
+	friends *tmp = head->lfriends;
+	while(tmp != NULL)
+	{
+		if(tmp->name == friend->fname)
+		{
+			return 1;
+		}
+	}
+	return 0;
 }

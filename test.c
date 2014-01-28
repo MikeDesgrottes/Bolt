@@ -28,7 +28,7 @@ void user_input()
             printf("Creating File....\n");
             tmp = Create(name,lname,age,description);
             write(tmp);
-            write_to_dtb(tmp);
+            //write_to_list(tmp);
             continue;
         }
         
@@ -60,17 +60,17 @@ int main()
     info(Naika);
     info(Mike);
     info(jenny);
-    //destroy(Mike);
-    //destroy(jenny);
-    //destroy(Naika);
-    //init();
-    write_to_dtb(Mike);
-    //write_to_dtb(Mike);
-    list_person();
-    //user_input();
+    destroy(Mike);
+    destroy(jenny);
+    destroy(Naika);
+    List* tmp = init();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
     //list_person();
+    //user_input();
+    //write_to_dtb(Mike);
+    //write_to_dtb(Mike);
+    list_person(tmp);
     //user_input();
     return(0);
 }

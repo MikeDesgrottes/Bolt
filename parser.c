@@ -18,10 +18,13 @@
 */
 List *LIST;
 // Initialize the global variable LIST.
-void init()
+
+List* init()
 {
+	List* LIST;
+	char* line = malloc(sizeof(char)*1024);
 	LIST = Create_list();
-	List *tmp = LIST->next;
+	List *tmp = NULL;
 	FILE *f  = fopen("dtb.zh","r+w");
 	if(f == NULL)
 	{
@@ -36,15 +39,20 @@ void init()
 			}
 		}else
 		{
-			tmp->next = Create_list();
-			while(tmp != NULL || fgets(tmp->value,1024,f))
+			tmp = Create_list();
+			LIST->next = tmp;
+			while(fgets(line,1024,f) != NULL)
 			{
+				tmp->value = line;
 			tmp->next = Create_list();
 			tmp = tmp->next;
 			}
 		}
+		printf("%s",LIST->next->value);
 	}
+	free(line);
 	fclose(f);
+	return tmp;
 	
 }
 
@@ -149,14 +157,19 @@ List* get_end_list(List *list)
 {
     List *tmp = malloc(sizeof(List));
     tmp = list;
-    if(tmp->next == NULL)
+    if(tmp != NULL){
+		if(tmp->next == NULL)
+		{
+			return NULL;
+		}
+		while(tmp->next != NULL)
+		{
+			tmp = tmp->next;
+		}
+    }else
     {
 		return NULL;
 	}
-    while(tmp->next != NULL)
-    {
-        tmp = tmp->next;
-    }
     return tmp;
 }
 /* This function take the first name of the head and append it to the linked list LIST
@@ -164,9 +177,9 @@ List* get_end_list(List *list)
  * 
  * 
  * */
-void write_to_dtb(Person *head)
+void write_to_list(Person *head,List* LiST)
 {
-    //init();
+    List* LIST = LiST;
     List *tmp = get_end_list(LIST);
     List *tmp2 = malloc(sizeof(List));
     tmp2->next = NULL;
@@ -183,6 +196,7 @@ void write_to_dtb(Person *head)
         }else
         {
             puts("Person already in the database!!");
+            list_person();
         }
     }
     //printf("%s\n",LIST->next->value);
@@ -229,9 +243,9 @@ char* lookup(List* list, Person* person)
     }
 }
 
-void list_person()
+void list_person(List* LIST)
 {
-    List* tmp = LIST;
+    List* tmp = LIST->next;
     while(tmp->next != NULL)
     {
         printf("%s\n",tmp->value);
@@ -240,7 +254,7 @@ void list_person()
     printf("%s\n",tmp->value);
 }
 
-char* trim( char *s )
+char* trim(char *s)
 {
     char* msg = malloc(sizeof(char) * strlen(s));
     strncpy(msg,s,strlen(s) -1);

@@ -25,4 +25,6 @@ int count_friend(Person *head);
 void destroy(void *head);
 void info(Person *head);
 char* get_friends(Person* head);
+void delete_friend(Person* head,Person* del);
+int isfriends(Person* head,Person* friend);
 #endif
