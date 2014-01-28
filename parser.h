@@ -17,11 +17,12 @@ char* print_before(char *str, int index);
 Person* read(char* str);
 void write(Person* head);
 List* get_end_list(List *list);
-void write_to_list(Person *head,List* LIST);
+void write_to_dtb(Person *head);
 List* Create_list();
 List* init();
 int contains(List* list,Person* person);
 char* lookup(List* list, Person* person);
 void list_person();
 char* trim( char *s );
+int look_up_file(Person* head);
 #endif

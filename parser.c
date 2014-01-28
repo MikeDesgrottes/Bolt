@@ -177,28 +177,24 @@ List* get_end_list(List *list)
  * 
  * 
  * */
-void write_to_list(Person *head,List* LiST)
+void write_to_dtb(Person *head)
 {
-    List* LIST = LiST;
-    List *tmp = get_end_list(LIST);
-    List *tmp2 = malloc(sizeof(List));
-    tmp2->next = NULL;
-    tmp2->value = head->fname;
-    if(tmp == NULL)
+    FILE* fp = fopen("dtb.zh","a");
+    if(fp == NULL)
     {
-        //puts("work!");
-        LIST->next = tmp2;
+        puts("error!");
     }else
     {
-        if(!contains(LIST,head))
+        if(look_up_file(head))
         {
-            tmp->next = tmp;
+        
         }else
         {
-            puts("Person already in the database!!");
-            list_person();
+            fprintf(fp,"%s\n",head->fname);
+            //printf("Printing..-> %s\n",head->fname);
         }
     }
+    fclose(fp);
     //printf("%s\n",LIST->next->value);
    /* if(!contains(LIST,head))
     {
@@ -241,6 +237,22 @@ char* lookup(List* list, Person* person)
     {
         return NULL;
     }
+}
+
+int look_up_file(Person* head)
+{
+    FILE* fp = fopen("dtb.zh","r");
+    char* tmp = malloc(sizeof(char)*1024);
+    while(fgets(tmp, 1024,fp) != NULL)
+    {
+        if(tmp== head->fname)
+        {
+            return 1;
+            puts(tmp);
+        }    
+    }
+    fclose(fp);
+    return 0;
 }
 
 void list_person(List* LIST)
