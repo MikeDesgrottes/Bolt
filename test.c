@@ -59,9 +59,6 @@ int main()
     info(Naika);
     info(Mike);
     info(jenny);
-    /*destroy(Mike);
-    destroy(jenny);
-    destroy(Naika);*/
     List* tmp = init();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
@@ -74,5 +71,9 @@ int main()
     write_to_dtb(Mike);
     write_to_dtb(jenny);
     write_to_dtb(Naika);
+    destroy(Mike);
+    destroy(jenny);
+    destroy(Naika);
+    destroy(tmp);
     return(0);
 }

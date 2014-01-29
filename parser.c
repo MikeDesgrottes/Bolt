@@ -58,7 +58,7 @@ List* init()
 	
 }
 
-// create a list
+// create a list. don't forget to free it.
 List* Create_list()
 {
     List* tmp = malloc(sizeof(List));
@@ -80,7 +80,7 @@ int index_of(char *str, char st)
             return -1;
     }
 }
-// This function print everything after, but not including , index.
+// This function print everything after, but not including , index. Don't forget to free it.
 char* print(char *string, int index)
 {
     int count =0;
@@ -98,7 +98,7 @@ char* print(char *string, int index)
     //printf("%s\n",tmp); <-- for testing purposes/
     return (tmp);
 }
-// print everything before the character at index.
+// print everything before the character at index. Don't forget to free it.
 char* print_before(char *str, int index)
 {
     int i = 0;
@@ -112,7 +112,7 @@ char* print_before(char *str, int index)
     //printf("%s: ",msg); <-- for testing purposes.
     return msg;
 }
-// this function read a file and create a struct of person from it.
+// this function read a file and create a struct of person from it. DOn't forget to free it.
 Person* read(char* str)
 {
     Person *head = malloc(sizeof(Person));
@@ -154,7 +154,7 @@ void write(Person* head)
     fclose(f);
     
 }
-
+// don't forget to free this. To prevent memory leaks
 List* get_end_list(List *list)
 {
     List *tmp = malloc(sizeof(List));
@@ -253,6 +253,7 @@ int look_up_file(Person* head)
             puts(tmp);
         }    
     }
+    free(tmp);
     fclose(fp);
     return 0;
 }
@@ -267,7 +268,7 @@ void list_person(List* LIST)
     }
     printf("%s\n",tmp->value);
 }
-
+// don't forget to free. To prevent memory leaks.
 char* trim(char *s)
 {
     char* msg = malloc(sizeof(char) * strlen(s));
