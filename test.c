@@ -66,7 +66,7 @@ int main()
     //user_input();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
-    //list_person(tmp);
+    list_person(tmp);
     //user_input();
     write_to_dtb(Mike);
     write_to_dtb(jenny);
