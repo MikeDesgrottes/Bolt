@@ -54,7 +54,7 @@ List* init()
 	}
 	free(line);
 	fclose(f);
-	return tmp;// unfortunatley it only return tmp, the pointer in tmp->next is lost.
+	return LIST;// unfortunatley it only return tmp, the pointer in tmp->next is lost.
 	
 }
 
@@ -206,7 +206,7 @@ void write_to_dtb(Person *head)
 // return 1 if the person's first name is found in the linked list LIST else return 0.
 int contains(List* list,Person* person)
 {
-    List* tmp = LIST;
+    List* tmp = list;
     if(tmp==NULL)
     {
         return 0;
@@ -247,7 +247,7 @@ int look_up_file(Person* head)
     char* tmp = malloc(sizeof(char)*1024);
     while(fgets(tmp, 1024,fp) != NULL)
     {
-        if(tmp== head->fname)
+        if(strncmp(tmp,head->fname,strlen(head->fname) -1) ==0)
         {
             return 1;
             puts(tmp);
@@ -260,6 +260,10 @@ int look_up_file(Person* head)
 void list_person(List* LIST)
 {
     List* tmp = LIST->next;
+    if(LIST == NULL || tmp == NULL)
+    {
+		return;
+	}
     while(tmp->next != NULL)
     {
         printf("%s\n",tmp->value);
