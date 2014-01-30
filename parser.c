@@ -277,8 +277,59 @@ char* trim(char *s)
 {
     char* msg = malloc(sizeof(char) * strlen(s));
     strncpy(msg,s,strlen(s) -1);
-    msg[strlen(s)] = '\0';
+    msg[strlen(s)+1] = '\0';
+    free(s);
     return msg;
+}
+void free_f(Person* head)
+{
+	if(head->lfriends == NULL)
+	{
+		free(head);
+	}else
+	{
+		friends *tmp = head->lfriends;
+		friends* next;
+		while(tmp != NULL)
+		{
+			if(tmp->next != NULL)
+			{
+				free(tmp);
+			}else
+			{
+				next = tmp->next;
+				free(tmp);
+				tmp = next;
+			}
+		}
+		free(head);
+	}
+	//free(head->fname);
+	//free(head->lname);
+	//free(head->age);
+	//free(head->description);
+	//free(head);
+}
+void free_l(List* list)
+{
+	List* tmp = list;
+	if(tmp)
+	{
+		return;
+	}else if(tmp->next == NULL)
+	{
+		free(tmp);
+		return;
+	}else
+	{
+		List* tmp2;
+		while(tmp)
+		{
+			tmp2 = tmp->next;
+			free(tmp);
+			tmp = tmp2;
+		}
+	}
 }
 /*int main()
 {

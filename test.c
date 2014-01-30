@@ -71,9 +71,9 @@ int main()
     write_to_dtb(Mike);
     write_to_dtb(jenny);
     write_to_dtb(Naika);
-    destroy(Mike);
-    destroy(jenny);
-    destroy(Naika);
+    free_f(Mike);
+    free_f(jenny);
+    free_f(Naika);
     destroy(tmp);
     return(0);
 }
