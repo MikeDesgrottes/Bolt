@@ -1,0 +1,8 @@
+ALgorithm for parser.c 
+
+Objective: The objective of this file is to provide a way to put the information of a person in a file and be able to read from it.
+            list of functions:
+                int index_of(char *str, char st):
+                    Loops through each character in the string *str to find the character st and returns the index of it
+                char* print(char *string, int index):
+                    This function returns 
