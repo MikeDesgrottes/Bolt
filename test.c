@@ -59,21 +59,20 @@ int main()
     info(Naika);
     info(Mike);
     info(jenny);
-    List* tmp = init();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
     //list_person();
     //user_input();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
-    list_person(tmp);
     //user_input();
     write_to_dtb(Mike);
     write_to_dtb(jenny);
     write_to_dtb(Naika);
+    printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
     free_f(Mike);
     free_f(jenny);
-    free_f(Naika);
-    destroy(tmp);
+    //free_f(Naika);
+    printf("%p->%s\n%p->%s\n%p->%s\n",Mike->fname,Mike->fname,Mike->lname,Mike->lname,Mike->description,Mike->description);
     return(0);
 }

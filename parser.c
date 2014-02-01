@@ -21,51 +21,7 @@
 *
 *
 **/
-List* init()
-{
-	List* LIST;
-	char* line = malloc(sizeof(char)*1024);// temporary variable to store each line in the text file.
-	LIST = Create_list();
-	List *tmp = NULL;
-	FILE *f  = fopen("dtb.zh","r+w");// open the file
-	if(f == NULL)// if file does not exist
-	{
-		puts("Error");
-	}else
-	{
-		if(tmp != NULL)// stub code
-		{
-			while( tmp != NULL||fgets(tmp->value,1024,f) != NULL)
-			{
-			tmp = tmp->next;
-			}
-		}else
-		{
-			tmp = Create_list(); // initialize temporary list to empty list
-			LIST->next = tmp;
-			while(fgets(line,1024,f) != NULL)// get all the line from the text file and store them in line.
-			{
-				tmp->value = line;// set tmp value to the line.
-			tmp->next = Create_list();
-			tmp = tmp->next;
-			}
-		}
-		printf("%s",LIST->next->value);// testing purposes
-	}
-	free(line);
-	fclose(f);
-	return LIST;// unfortunatley it only return tmp, the pointer in tmp->next is lost.
-	
-}
 
-// create a list. don't forget to free it.
-List* Create_list()
-{
-    List* tmp = malloc(sizeof(List));
-    tmp->value = "";
-    tmp->next = NULL;
-    return tmp;
-}
 // find the index of a character in a string. if the character is not found return -1.
 int index_of(char *str, char st)
 {
@@ -285,7 +241,11 @@ void free_f(Person* head)
 {
 	if(head->lfriends == NULL)
 	{
-		free(head);
+		//free(head->fname);
+	    free(head->lname);
+	    //free(head->age);
+	    free(head->description);
+	    free(head);
 	}else
 	{
 		friends *tmp = head->lfriends;
@@ -302,12 +262,13 @@ void free_f(Person* head)
 				tmp = next;
 			}
 		}
-		free(head);
+		free(head->fname);
+	    free(head->lname);
+	    //free(head->age);
+	    free(head->description);
+	    free(head);
 	}
-	//free(head->fname);
-	//free(head->lname);
-	//free(head->age);
-	//free(head->description);
+	
 	//free(head);
 }
 void free_l(List* list)
