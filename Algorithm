@@ -5,4 +5,12 @@ Objective: The objective of this file is to provide a way to put the information
                 int index_of(char *str, char st):
                     Loops through each character in the string *str to find the character st and returns the index of it
                 char* print(char *string, int index):
-                    This function returns 
+                    This function returns a character array containing all character after index.
+                char* print_before(char* str, int index):
+                    Returns all character before the index.
+                Person* read(char* str):
+                    This function take a string as a parameter for the filename. If the file does not exist, the program will stop.
+                    This function loops through each line in the file and create a Person base on each attribute specify.
+                void write(Person* head):
+                    create a file and write each attribute in that file. The file name is set like this -> Person.firstname_Person.lastname.
+                
