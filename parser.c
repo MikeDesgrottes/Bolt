@@ -146,7 +146,7 @@ void write_to_dtb(Person *head)
         }else
         {
             snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
-            printf("%s",name);
+            //printf("%s",name);
             fprintf(fp,"%s\n",name);
             //printf("Printing..-> %s\n",head->fname);
         }
@@ -201,7 +201,7 @@ int look_up_file(Person* head)
     FILE* fp = fopen("dtb.zh","r");
     char* tmp = malloc(sizeof(char)*1024);
     char name[1024];
-    snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
+    snprintf(name,1024,"%s%s%s",head->lname,"_",head->fname);
     size_t len = strlen(head->fname) -1;
     while(fgets(tmp, 1024,fp) != NULL)
     {
