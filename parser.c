@@ -201,12 +201,14 @@ int look_up_file(Person* head)
 {
     FILE* fp = fopen("dtb.zh","r");
     char* tmp = malloc(sizeof(char)*1024);
+    size_t len = strlen(head->fname) -1;
     while(fgets(tmp, 1024,fp) != NULL)
     {
-        if(strncmp(tmp,head->fname,strlen(head->fname) -1) ==0)
+        if(strncmp(tmp,head->fname,len) ==0)
         {
+            //puts(tmp);
+            free(tmp);
             return 1;
-            puts(tmp);
         }    
     }
     free(tmp);
@@ -232,8 +234,8 @@ void list_person(List* LIST)
 char* trim(char *s)
 {
     char* msg = malloc(sizeof(char) * strlen(s));
-    strncpy(msg,s,strlen(s) -1);
-    msg[strlen(s)+1] = '\0';
+    strncpy(msg,s,strlen(s)-1);
+    msg[strlen(s)] = '\0';
     free(s);
     return msg;
 }
@@ -241,10 +243,7 @@ void free_f(Person* head)
 {
 	if(head->lfriends == NULL)
 	{
-		//free(head->fname);
-	    free(head->lname);
-	    //free(head->age);
-	    free(head->description);
+		
 	    free(head);
 	}else
 	{
@@ -262,10 +261,6 @@ void free_f(Person* head)
 				tmp = next;
 			}
 		}
-		free(head->fname);
-	    free(head->lname);
-	    //free(head->age);
-	    free(head->description);
 	    free(head);
 	}
 	
