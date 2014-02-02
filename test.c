@@ -72,7 +72,6 @@ int main()
     printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
     free_f(Mike);
     free_f(jenny);
-    //free_f(Naika);
-    printf("%p->%s\n%p->%s\n%p->%s\n",Mike->fname,Mike->fname,Mike->lname,Mike->lname,Mike->description,Mike->description);
+    free_f(Naika);
     return(0);
 }

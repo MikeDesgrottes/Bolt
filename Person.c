@@ -18,7 +18,7 @@ char* concat(char* f, char* s)
     char* result = strcat(f,s);
     return result;
 }
-Person* Create(char *fname, char*lname, int age, char *description)// This function creates a new Person from allocated memory. It set the attribute to the input given from the parameter.
+Person* Create(char *fname, char* lname, int age, char *description)// This function creates a new Person from allocated memory. It set the attribute to the input given from the parameter.
 {
     Person *tmp = malloc(sizeof(Person));// allocate memory of size person 
     tmp->fname = fname;
