@@ -134,17 +134,20 @@ List* get_end_list(List *list)
 void write_to_dtb(Person *head)
 {
     FILE* fp = fopen("dtb.zh","a");
+    char name[1024];
     if(fp == NULL)
     {
         puts("error!");
     }else
     {
-        if(look_up_file(head))
+        if(look_up_file(head))// to avoid dupicate in the file. TODO: store both the first name and the last name.
         {
         
         }else
         {
-            fprintf(fp,"%s\n",head->fname);
+            snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
+            printf("%s",name);
+            fprintf(fp,"%s\n",name);
             //printf("Printing..-> %s\n",head->fname);
         }
     }
@@ -197,10 +200,12 @@ int look_up_file(Person* head)
 {
     FILE* fp = fopen("dtb.zh","r");
     char* tmp = malloc(sizeof(char)*1024);
+    char name[1024];
+    snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
     size_t len = strlen(head->fname) -1;
     while(fgets(tmp, 1024,fp) != NULL)
     {
-        if(strncmp(tmp,head->fname,len) ==0)
+        if(strncmp(tmp,name,len) ==0)
         {
             //puts(tmp);
             free(tmp);
