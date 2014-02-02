@@ -16,6 +16,11 @@
 *
 *
 */
+/* This function create a linked list of list out of a text file.
+*   TODO: Fix it. It does return a list but it lose the pointer for list->next?
+*
+*
+**/
 
 // find the index of a character in a string. if the character is not found return -1.
 int index_of(char *str, char st)
