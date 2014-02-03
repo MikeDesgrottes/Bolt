@@ -8,9 +8,8 @@
 *
 **TODO: Implement a data structure for wich zParser will store information <--- See Person.c and Person.h for the solution
 *       Add feature to use .txt file to store information from data structure to the file
-*       Implement a change to add not only the irst name but also the last name.
 *
-**
+*
 *
 *
 *
@@ -126,8 +125,7 @@ List* get_end_list(List *list)
 	}
     return tmp;
 }
-/* This function take the first name of the head and append it to the linked list LIST
- * 	TODO: Do not store only the first name. Store both the first name and the last name.
+/* This function take the name of the head and append it to the linked list LIST
  * 
  * 
  * */
@@ -140,9 +138,10 @@ void write_to_dtb(Person *head)
         puts("error!");
     }else
     {
-        if(look_up_file(head))// to avoid dupicate in the file. TODO: store both the first name and the last name.
+        if(look_up_file(head))// to avoid dupicate in the file.
         {
-        
+            puts("found");
+            return;
         }else
         {
             snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
@@ -201,8 +200,8 @@ int look_up_file(Person* head)
     FILE* fp = fopen("dtb.zh","r");
     char* tmp = malloc(sizeof(char)*1024);
     char name[1024];
-    snprintf(name,1024,"%s%s%s",head->lname,"_",head->fname);
-    size_t len = strlen(head->fname) -1;
+    snprintf(name,1024,"%s%s%s",head->fname,"_",head->lname);
+    size_t len = strlen(head->fname) + strlen(head->lname) +1;
     while(fgets(tmp, 1024,fp) != NULL)
     {
         if(strncmp(tmp,name,len) ==0)
