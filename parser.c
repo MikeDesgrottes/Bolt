@@ -8,7 +8,7 @@
 *
 **TODO: Implement a data structure for wich zParser will store information <--- See Person.c and Person.h for the solution
 *       Add feature to use .txt file to store information from data structure to the file
-*
+*       ---- Find a way to add list of friend to a person's personal .zh file.
 *
 *
 *
@@ -159,6 +159,7 @@ void write_to_dtb(Person *head)
             //printf("Printing..-> %s\n",head->fname);
         }
     }
+    write(head);
     fclose(fp);
     //printf("%s\n",LIST->next->value);
    /* if(!contains(LIST,head))
@@ -334,11 +335,12 @@ void list_all_person()
 	char* fname;
 	if(fp)
 	{
+	    printf("This is the list of all people in the databse:\n");
 		while(fgets(tmp,1024,fp) != 0)
 		{
 			fname = print_before(tmp,index_of(tmp,'_'));
 			lname = print(tmp,index_of(tmp,'_'));
-			printf("%s %s",fname,lname);
+			printf("\t%s %s",fname,lname);
 			
 		}
 	}

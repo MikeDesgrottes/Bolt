@@ -43,12 +43,25 @@ void user_input()
             
         }else if(input == 'l')
         {
+            printf("Do you wish to see the list of a friend or the list of people?\n Please press f for freind and p for list of people:");
+            char tmp =fgetc(stdin);
+            if(tmp == 'x')
+            {
+                exit(1);
+            }else if(tmp == 'f')
+            {
+            
+            }else if(tmp == 'p')
+            {
+                list_all_person();
+                continue;
+            }
 		}
     }
 }
 int main()
 {
-    Person* Mike = Create("Mike","Desgrottes",17,"Derp");
+    /*Person* Mike = Create("Mike","Desgrottes",17,"Derp");
     Person* jenny = Create("jennifer","Desgrottes",18,"derp");
     Person* Naika = read("Mike.zh");
     add_friend(Mike,jenny);
@@ -58,21 +71,21 @@ int main()
     delete_friend(Mike,jenny);
     info(Naika);
     info(Mike);
-    info(jenny);
+    info(jenny);*/
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
     //list_person();
     //user_input();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
-    //user_input();
-    write_to_dtb(Mike);
+    user_input();
+    /*write_to_dtb(Mike);
     write_to_dtb(jenny);
-    write_to_dtb(Naika);
+    write_to_dtb(Naika);*/
     //printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
-    free_f(Mike);
+    /*free_f(Mike);
     free_f(jenny);
     free_fr(Naika);
-    list_all_person();
+    list_all_person();*/
     return(0);
 }
