@@ -25,4 +25,6 @@ char* trim( char *s );
 int look_up_file(Person* head);
 void free_f(Person* head);
 void free_l(List* list);
+void free_fr(Person* head);
+void list_all_person();
 #endif

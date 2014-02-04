@@ -37,7 +37,7 @@ char* print(char *string, int index)
     int count =0;
     int i = index +1;
     size_t len = strlen(string) -1;
-    char *tmp = malloc(sizeof(char)*index);
+    char *tmp = malloc(sizeof(char)*500);
     for(;i<=len;i++)
     {
         //printf("%i\n",i); <-- for testing purposes. 
@@ -53,7 +53,7 @@ char* print(char *string, int index)
 char* print_before(char *str, int index)
 {
     int i = 0;
-    char* msg = malloc(sizeof(char)*index);
+    char* msg = malloc(sizeof(char)*500);
     for(i=0;i<index;i++)
     {
         msg[i] = str[i];
@@ -79,13 +79,21 @@ Person* read(char* str)
             //printf("%s",print(result[count],index_of(result[count],'=')));
             count++;
         }
-        head->fname = trim(print(result[0],index_of(result[0],'=')));// the trim function just take ou the newline character from string.
-        head->lname = trim(print(result[1],index_of(result[1],'=')));
-        head->age = atoi(print(result[2],index_of(result[2],'=')));
-        head->description = trim(print(result[3],index_of(result[3],'=')));
+        char* fname = trim(print(result[0],index_of(result[0],'=')));
+        char* lname = trim(print(result[1],index_of(result[1],'=')));
+        char* description = trim(print(result[3],index_of(result[3],'=')));
+        char* age = print(result[2],index_of(result[2],'='));// the trim function just take ou the newline character from string.
+        head->fname = fname;
+        head->lname = lname;
+        head->description = description;
+        head->age = atoi(age);
         head->lfriends = NULL;
         //printf("%s\n",result[0]);
-        fclose(fp);
+        //fclose(fp);
+        //free(fname);
+        //free(lname);
+        free(age);
+        //free(description);
     }
     else
     {
@@ -266,6 +274,36 @@ void free_f(Person* head)
 	
 	//free(head);
 }
+void free_fr(Person* head)
+{
+	if(head->lfriends == NULL)
+	{
+		
+	    free(head);
+	}else
+	{
+		friends *tmp = head->lfriends;
+		friends* next;
+		while(tmp != NULL)
+		{
+			if(tmp->next != NULL)
+			{
+				free(tmp);
+			}else
+			{
+				next = tmp->next;
+				free(tmp);
+				tmp = next;
+			}
+		}
+		free(head->fname);
+		free(head->lname);
+		free(head->description);
+	    free(head);
+	}
+	
+	//free(head);
+}
 void free_l(List* list)
 {
 	List* tmp = list;
@@ -286,6 +324,21 @@ void free_l(List* list)
 			tmp = tmp2;
 		}
 	}
+}
+void list_all_person()
+{
+	FILE* fp = fopen("dtb.zh","r");
+	char *tmp = malloc(sizeof(char) *1024);
+	if(fp)
+	{
+		while(fgets(tmp,1024,fp) != NULL)
+		{
+			char* fname = print_before(tmp,index_of(tmp,'_'));
+			printf("%s\n",fname);
+			free(fname);
+		}
+	}
+	free(tmp);
 }
 /*int main()
 {

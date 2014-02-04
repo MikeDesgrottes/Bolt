@@ -72,6 +72,7 @@ int main()
     printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
     free_f(Mike);
     free_f(jenny);
-    free_f(Naika);
+    free_fr(Naika);
+    list_all_person();
     return(0);
 }
