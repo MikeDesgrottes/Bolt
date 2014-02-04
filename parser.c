@@ -330,13 +330,16 @@ void list_all_person()
 {
 	FILE* fp = fopen("dtb.zh","r");
 	char *tmp = malloc(sizeof(char) *1024);
+	char* lname;
+	char* fname;
 	if(fp)
 	{
-		while(fgets(tmp,1024,fp) != NULL)
+		while(fgets(tmp,1024,fp) != 0)
 		{
-			char* fname = print_before(tmp,index_of(tmp,'_'));
-			printf("%s\n",fname);
-			free(fname);
+			fname = print_before(tmp,index_of(tmp,'_'));
+			lname = print(tmp,index_of(tmp,'_'));
+			printf("%s %s",fname,lname);
+			
 		}
 	}
 	free(tmp);
