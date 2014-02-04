@@ -94,6 +94,7 @@ Person* read(char* str)
         //free(lname);
         free(age);
         //free(description);
+        fclose(fp);
     }
     else
     {
