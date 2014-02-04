@@ -69,7 +69,7 @@ int main()
     write_to_dtb(Mike);
     write_to_dtb(jenny);
     write_to_dtb(Naika);
-    printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
+    //printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
     free_f(Mike);
     free_f(jenny);
     free_f(Naika);
