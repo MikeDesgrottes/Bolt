@@ -274,7 +274,7 @@ void free_f(Person* head)
 	
 	//free(head);
 }
-// Custom freeing function for a person's friends.
+// Custom freeing function for a person taken from function read()
 void free_fr(Person* head)
 {
 	if(head->lfriends == NULL)

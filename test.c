@@ -34,11 +34,14 @@ void user_input()
         
         if(input == 'r')
         {
+			
             printf("Please enter the file path: ");
             scanf("%1023s",file);
+            Person* tmp = read(file);
             //printf("%s\n",file);
-            info(read(file));
+            //info(read(file));
             //input = NULL;
+            free_fr(tmp);
             continue;
             
         }else if(input == 'l')
@@ -59,6 +62,7 @@ void user_input()
 			}
 		}
     }
+    free_f(tmp);
 }
 int main()
 {
