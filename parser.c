@@ -7,7 +7,7 @@
 * This is the first version of zParser. The parser to project Zeha.
 *
 **TODO: Implement a data structure for wich zParser will store information <--- See Person.c and Person.h for the solution
-*       Add feature to use .txt file to store information from data structure to the file
+*  
 *       ---- Find a way to add list of friend to a person's personal .zh file.
 *       
 *
@@ -135,10 +135,6 @@ List* get_end_list(List *list)
 	}
     return tmp;
 }
-/* This function take the name of the head and append it to the linked list LIST
- * 
- * 
- * */
 void write_to_dtb(Person *head)
 {
     FILE* fp = fopen("dtb.zh","a");
@@ -250,6 +246,7 @@ char* trim(char *s)
     free(s);
     return msg;
 }
+//Custom freeing function for Person.
 void free_f(Person* head)
 {
 	if(head->lfriends == NULL)
@@ -277,6 +274,7 @@ void free_f(Person* head)
 	
 	//free(head);
 }
+// Custom freeing function for a person's friends.
 void free_fr(Person* head)
 {
 	if(head->lfriends == NULL)
