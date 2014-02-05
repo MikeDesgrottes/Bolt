@@ -51,6 +51,10 @@ void user_input()
 				if(tmp == 'p')
 				{
 					list_all_person();
+					break;
+				}else if(tmp == 'f')
+				{
+				    // TODO: add a feature wich let you list all of a particualr person's friends.
 				}
 			}
 		}
