@@ -2,7 +2,7 @@
 #include "parser.h"
 #include <stdio.h>
 
-void user_input()
+/*void user_input()
 {
     char input;
     char name[1024];
@@ -64,11 +64,11 @@ void user_input()
 		}
     }
     free_f(tmp);
-}
+}*/
 int main()
 {
-    /*Person* Mike = Create("Mike","Desgrottes",17,"Derp");
-    Person* jenny = Create("jennifer","Desgrottes",18,"derp");
+    Person* Mike = Create("Mike","Desgrottes",17,"Derp",'M');
+    Person* jenny = Create("jennifer","Desgrottes",18,"derp",'F');
     Person* Naika = read("Mike.zh");
     add_friend(Mike,jenny);
     info(Naika);
@@ -77,14 +77,14 @@ int main()
     delete_friend(Mike,jenny);
     info(Naika);
     info(Mike);
-    info(jenny);*/
+    info(jenny);
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
     //list_person();
     //user_input();
     //write_to_dtb(Mike);
     //write_to_dtb(Mike);
-    user_input();
+    //user_input();
     /*write_to_dtb(Mike);
     write_to_dtb(jenny);
     write_to_dtb(Naika);*/

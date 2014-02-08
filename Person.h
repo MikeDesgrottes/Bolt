@@ -9,6 +9,7 @@ typedef struct Per Person;
 struct Per{
     char *fname;
     char *lname;
+    char gender;
     int age;
     char *description;
     friends *lfriends;
@@ -18,7 +19,7 @@ struct fri{
     friends *next;
 };
 /* Prototype of the functions of Person. name are pretty self-explainitory*/
-Person* Create(char *fname, char *lname, int age, char *description);
+Person* Create(char *fname, char *lname, int age, char *description,char gender);
 friends* get_end(Person *p);
 void add_friend(Person *head, Person *friend);
 void list_friends(Person *head);
