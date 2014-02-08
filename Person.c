@@ -18,11 +18,12 @@ char* concat(char* f, char* s)
     char* result = strcat(f,s);
     return result;
 }
-Person* Create(char *fname, char* lname, int age, char *description)// This function creates a new Person from allocated memory. It set the attribute to the input given from the parameter.
+Person* Create(char *fname, char* lname, int age, char *description,char gender)// This function creates a new Person from allocated memory. It set the attribute to the input given from the parameter.
 {
     Person *tmp = malloc(sizeof(Person));// allocate memory of size person 
     tmp->fname = fname;
     tmp->lname = lname;
+    tmp->gender = gender;
     tmp->age = age;
     tmp->description = description;
     tmp->lfriends = NULL;
@@ -166,7 +167,7 @@ int count_friend(Person *head)
 /*Print out the information of a Person.*/
 void info(Person* head)
 {
-    printf("First name: %s\nLast name: %s\nage: %i\ndescriptiong: %s\n",head->fname,head->lname,head->age,head->description);
+    printf("First name: %s\nLast name: %s\nage: %i\nGender: %c\ndescriptiong: %s\n",head->fname,head->lname,head->age,head->gender,head->description);
     list_friends(head);// list the friends.
 }
 /* I had so many memory leaks tha i decided to create a function to destroy a Person when you done using it
@@ -187,7 +188,7 @@ void delete_friend(Person* head,Person* del)
     friends *prev = NULL;
     if(current == NULL) // If head have no friends
     {
-        printf("no friends to delete\n");
+        //printf("no friends to delete\n");
         return;
     }
     friends *next = current->next; // initialize next as next friends in current
