@@ -82,11 +82,13 @@ Person* read(char* str)
         }
         char* fname = trim(print(result[0],index_of(result[0],'=')));
         char* lname = trim(print(result[1],index_of(result[1],'=')));
-        char* description = trim(print(result[3],index_of(result[3],'=')));
+        char* gender = print(result[3],index_of(result[3],'='));
+        char* description = trim(print(result[4],index_of(result[4],'=')));
         char* age = print(result[2],index_of(result[2],'='));// the trim function just take ou the newline character from string.
         head->fname = fname;
         head->lname = lname;
         head->description = description;
+        head->gender = gender[0];
         head->age = atoi(age);
         head->lfriends = NULL;
         //printf("%s\n",result[0]);
@@ -111,7 +113,7 @@ void write(Person* head)
     char msg[1024];
     snprintf(msg,1024,"%s%s%s%s",head->fname,"_",head->lname,".zh");
     FILE *f = fopen(msg,"w");
-    fprintf(f,"First name=%s\nLast name=%s\nage=%i\ndescription=%s\n",tmp->fname,tmp->lname,tmp->age,tmp->description);
+    fprintf(f,"First name=%s\nLast name=%s\nage=%i\nGender=%c\ndescription=%s\n",tmp->fname,tmp->lname,tmp->age,tmp->gender,tmp->description);
     fclose(f);
     
 }
@@ -146,7 +148,7 @@ void write_to_dtb(Person *head)
     {
         if(look_up_file(head))// to avoid dupicate in the file.
         {
-            puts("found");
+            //puts("found");
             return;
         }else
         {

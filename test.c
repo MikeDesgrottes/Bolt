@@ -68,30 +68,7 @@
 int main()
 {
     Person* Mike = Create("Mike","Desgrottes",17,"Derp",'M');
-    Person* jenny = Create("jennifer","Desgrottes",18,"derp",'F');
-    Person* Naika = read("Mike.zh");
-    add_friend(Mike,jenny);
-    info(Naika);
-    info(Mike);
-    info(jenny);
-    delete_friend(Mike,jenny);
-    info(Naika);
-    info(Mike);
-    info(jenny);
-    //write_to_dtb(Mike);
-    //write_to_dtb(Mike);
-    //list_person();
-    //user_input();
-    //write_to_dtb(Mike);
-    //write_to_dtb(Mike);
-    //user_input();
-    /*write_to_dtb(Mike);
-    write_to_dtb(jenny);
-    write_to_dtb(Naika);*/
-    //printf("%p\n%p\n%p\n",Mike->fname,Mike->lname,Mike->description);
-    /*free_f(Mike);
-    free_f(jenny);
-    free_fr(Naika);
-    list_all_person();*/
+    write(Mike);
+    write_to_dtb(Mike);
     return(0);
 }
