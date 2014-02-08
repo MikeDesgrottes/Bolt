@@ -37,11 +37,12 @@ void user_input()
 			
             printf("Please enter the file path: ");
             scanf("%1023s",file);
-            Person* tmp = read(file);
+            Person* temp = read(file);
             //printf("%s\n",file);
             //info(read(file));
             //input = NULL;
-            free_fr(tmp);
+            info(temp);
+            free_fr(temp);
             continue;
             
         }else if(input == 'l')
